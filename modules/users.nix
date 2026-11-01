@@ -14,8 +14,6 @@
     XCURSOR_SIZE = "24";
   };
 
-  environment.sessionVariables = {
-    AQ_NO_MODIFIERS = "1";
-    AQ_NO_ATOMIC = "1";
-  };
+  # AQ_NO_MODIFIERS / AQ_NO_ATOMIC were removed: they only affect Hyprland's
+  # Aquamarine backend. Mango and Umbriel are wlroots-based and ignore them.
 }

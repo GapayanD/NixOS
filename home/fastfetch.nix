@@ -8,9 +8,9 @@
 
         "logo": {
           "type": "auto",
-          "source": "NixOS",
+          "source": "nixos_old",
           "padding": {
-            "top": 2
+          "left": 1
           }
         },
 

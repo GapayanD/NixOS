@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/boot.nix
-    ./modules/hyprland.nix
+    ./modules/compositors.nix
     ./modules/nix.nix
     ./modules/hardware.nix
     ./modules/audio.nix
@@ -24,7 +24,11 @@
   services.tumbler.enable = true;
   services.flatpak.enable = true;
   services.gnome.gnome-keyring.enable = true;
+
+  # This is the polkit *daemon* (the thing that decides yes/no). It is NOT an
+  # authentication agent; the agent is Noctalia's, enabled in home/noctalia.nix.
   security.polkit.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "26.05";
 }

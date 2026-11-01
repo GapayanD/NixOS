@@ -1,16 +1,16 @@
 {
-  description = "NixOS desktop configuration: Hyprland + Noctalia + Home Manager";
+  description = "NixOS desktop configuration: Mango + Umbriel + Noctalia + Home Manager";
 
-  # Binary caches: configure these before building the flake so Hyprland and
-  # Noctalia can be downloaded instead of compiled locally when cached builds exist.
+  # Binary caches: configure these before building the flake so Noctalia and
+  # Umbriel can be downloaded instead of compiled locally when cached builds exist.
   nixConfig = {
     extra-substituters = [
-      "https://hyprland.cachix.org"
       "https://noctalia.cachix.org"
+      "https://umbriel.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "umbriel.cachix.org-1:JfNq/2yg2S6D6z4Z2dVSZrZlDPQTKtexB6GAVLD98nw="
     ];
   };
 
@@ -22,19 +22,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Do not override Hyprland's nixpkgs input: doing so can invalidate its cache.
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    # Workspace overview plugin. `follows` builds it against the exact Hyprland
-    # above; a plugin built against different headers refuses to load.
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # The cachix branch tracks a Noctalia revision with prebuilt cache artifacts.
     # Do not set noctalia.inputs.nixpkgs.follows, as that changes its derivation hash.
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
+
+    # Same rule as Noctalia: the cachix branch is the latest commit CI has cached,
+    # and nixpkgs must NOT follow ours or the store paths won't match the cache.
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
 
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
