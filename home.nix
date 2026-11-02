@@ -13,7 +13,6 @@
     ./home/mpd.nix
     ./home/direnv.nix
     ./home/helix.nix
-    ./modules/programs/konsole.nix
   ];
 
   home.username = username;

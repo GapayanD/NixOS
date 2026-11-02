@@ -96,49 +96,60 @@ This tree documents the older Hyprland branch. The `mango` branch may have a dif
 
 ```text
 .
-├── flake.nix                  # Flake inputs and NixOS host output
-├── flake.lock                 # Locked dependency revisions
-├── configuration.nix          # Top-level NixOS module imports
-├── hardware-configuration.nix # Generated, machine-specific hardware settings
-├── home.nix                   # Home Manager entry point
-├── modules/
-│   ├── boot.nix
-│   ├── nix.nix
-│   ├── hardware.nix
-│   ├── audio.nix
-│   ├── network.nix
-│   ├── services.nix
-│   ├── locale.nix
-│   ├── users.nix
-│   ├── fonts.nix
-│   ├── hyprland.nix
-│   ├── sddm-theme.nix
-│   ├── zen-browser.nix
-│   ├── adb.nix
-│   ├── shell.nix
-│   └── programs/
-│       ├── dev.nix
-│       ├── java.nix
-│       └── konsole.nix
-└── home/
-    ├── packages.nix
-    ├── theming.nix
-    ├── fish.nix
-    ├── fastfetch.nix
-    ├── wezterm.nix
-    ├── helix.nix
-    ├── git.nix
-    ├── xdg.nix
-    ├── mpd.nix
-    ├── direnv.nix
-    └── hyprland/
-        ├── default.nix
-        ├── hyprland.lua
-        └── conf/
-            ├── appearance.lua
-            ├── keybinds.lua
-            ├── window-rules.lua
-            └── workspaces.lua
+├── configuration.nix
+├── flake.lock
+├── flake.nix
+├── hardware-configuration.nix
+├── home
+│   ├── direnv.nix
+│   ├── fastfetch.nix
+│   ├── fish.nix
+│   ├── git.nix
+│   ├── helix.nix
+│   ├── mango
+│   │   ├── appearance.nix
+│   │   ├── autostart.nix
+│   │   ├── binds.nix
+│   │   ├── default.nix
+│   │   ├── input.nix
+│   │   ├── noctalia.nix
+│   │   └── rules.nix
+│   ├── mpd.nix
+│   ├── packages.nix
+│   ├── theming.nix
+│   ├── umbriel
+│   │   ├── animation.nix
+│   │   ├── appearance.nix
+│   │   ├── binds.nix
+│   │   ├── default.nix
+│   │   ├── general.nix
+│   │   ├── input.nix
+│   │   ├── layout.nix
+│   │   └── rules.nix
+│   ├── wezterm.lua
+│   ├── wezterm.nix
+│   └── xdg.nix
+├── home.nix
+├── modules
+│   ├── adb.nix
+│   ├── audio.nix
+│   ├── boot.nix
+│   ├── compositors.nix
+│   ├── fonts.nix
+│   ├── hardware.nix
+│   ├── locale.nix
+│   ├── network.nix
+│   ├── nix.nix
+│   ├── polkit.nix
+│   ├── programs
+│   │   ├── dev.nix
+│   │   └── java.nix
+│   ├── sddm-theme.nix
+│   ├── services.nix
+│   ├── shell.nix
+│   ├── users.nix
+│   └── zen-browser.nix
+└── README.md
 ```
 
 On `main`, `configuration.nix` imports the system modules, while `home.nix` is the Home Manager entry point for user applications and dotfiles. The Hyprspace plugin path is generated from the Nix store by `home/hyprland/default.nix`, rather than hard-coded in the Lua configuration.

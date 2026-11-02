@@ -33,6 +33,7 @@ in
     # Notes and office productivity
     obsidian
     onlyoffice-desktopeditors
+    papers
 
     # Development and programming
     nodejs
@@ -108,5 +109,8 @@ in
     nixfmt
     statix
     deadnix
+
+    #System monitor
+    mission-center
   ];
 }

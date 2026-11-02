@@ -11,6 +11,7 @@
     ./modules/locale.nix
     ./modules/users.nix
     ./modules/fonts.nix
+    ./modules/polkit.nix
     ./modules/sddm-theme.nix
     ./modules/zen-browser.nix
     ./modules/adb.nix
